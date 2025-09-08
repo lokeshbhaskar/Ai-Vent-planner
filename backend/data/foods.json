@@ -1,0 +1,38 @@
+[
+  {
+    "type": "Vegetarian Buffet",
+    "costPerHead": 500,
+    "eventTypes": ["Wedding", "Birthday", "Corporate"],
+    "cuisine": ["Indian", "Italian"]
+  },
+  {
+    "type": "Non-Vegetarian Buffet",
+    "costPerHead": 700,
+    "eventTypes": ["Wedding", "Corporate", "Birthday"],
+    "cuisine": ["Indian", "Continental"]
+  },
+  {
+    "type": "Vegan Menu",
+    "costPerHead": 600,
+    "eventTypes": ["Birthday", "Corporate"],
+    "cuisine": ["Salads", "Asian"]
+  },
+  {
+    "type": "Dessert Table",
+    "costPerHead": 300,
+    "eventTypes": ["Wedding", "Birthday"],
+    "cuisine": ["Cakes", "Pastries"]
+  },
+  {
+    "type": "Street Food Counter",
+    "costPerHead": 400,
+    "eventTypes": ["Wedding", "Birthday"],
+    "cuisine": ["Chaat", "Snacks"]
+  },
+  {
+    "type": "Mixed Buffet (Veg + Non-Veg)",
+    "costPerHead": 800,
+    "eventTypes": ["Wedding", "Corporate", "Birthday"],
+    "cuisine": ["Indian", "Continental", "Italian", "Asian"]
+  }
+]

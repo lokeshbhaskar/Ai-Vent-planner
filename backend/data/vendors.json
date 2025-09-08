@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Elite DJ Services",
+    "serviceType": "Entertainment",
+    "cost": 20000,
+    "eventTypes": ["Wedding", "Birthday", "Corporate"],
+    "contact": "elite.dj@example.com"
+  },
+  {
+    "name": "Floral Decorators",
+    "serviceType": "Decoration",
+    "cost": 15000,
+    "eventTypes": ["Wedding", "Birthday"],
+    "contact": "floral.decor@example.com"
+  },
+  {
+    "name": "Photo Magic Studio",
+    "serviceType": "Photography",
+    "cost": 25000,
+    "eventTypes": ["Wedding", "Birthday", "Corporate"],
+    "contact": "photo.magic@example.com"
+  },
+  {
+    "name": "Cakes & Treats",
+    "serviceType": "Food",
+    "cost": 5000,
+    "eventTypes": ["Birthday", "Wedding"],
+    "contact": "cakes.treats@example.com"
+  },
+  {
+    "name": "Star Light Sound",
+    "serviceType": "Entertainment",
+    "cost": 18000,
+    "eventTypes": ["Wedding", "Corporate"],
+    "contact": "starlight.sound@example.com"
+  }
+]

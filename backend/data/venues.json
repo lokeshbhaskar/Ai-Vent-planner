@@ -1,0 +1,282 @@
+[
+  {
+    "name": "Royal Palace Banquet",
+    "capacity": 250,
+    "cost": 120000,
+    "location": "Surat",
+    "eventTypes": ["Wedding", "Engagement"],
+    "amenities": ["Parking", "Stage", "AC", "Sound System"]
+  },
+  {
+    "name": "Sunny Garden",
+    "capacity": 150,
+    "cost": 70000,
+    "location": "Ahmedabad",
+    "eventTypes": ["Birthday", "Corporate"],
+    "amenities": ["Garden", "AC", "Open Air"]
+  },
+  {
+    "name": "City Grand Hall",
+    "capacity": 300,
+    "cost": 150000,
+    "location": "Mumbai",
+    "eventTypes": ["Wedding", "Corporate"],
+    "amenities": ["AC", "Sound System", "Stage", "Parking"]
+  },
+  {
+    "name": "Heritage Haveli",
+    "capacity": 200,
+    "cost": 90000,
+    "location": "Jaipur",
+    "eventTypes": ["Wedding", "Engagement", "Birthday"],
+    "amenities": ["Traditional Decor", "Parking", "Stage"]
+  },
+  {
+    "name": "Skyline Rooftop",
+    "capacity": 120,
+    "cost": 60000,
+    "location": "Delhi",
+    "eventTypes": ["Corporate", "Birthday"],
+    "amenities": ["Rooftop View", "Bar", "Sound System"]
+  },
+  {
+    "name": "Patna Grand Hotel",
+    "capacity": 220,
+    "cost": 95000,
+    "location": "Patna",
+    "eventTypes": ["Wedding", "Corporate", "Birthday"],
+    "amenities": ["Parking", "AC", "Stage", "Dining Hall"]
+  },
+  {
+    "name": "Ganga View Banquet",
+    "capacity": 180,
+    "cost": 85000,
+    "location": "Patna",
+    "eventTypes": ["Wedding", "Engagement"],
+    "amenities": ["River View", "AC", "Sound System"]
+  },
+  {
+    "name": "Patliputra Heritage Hall",
+    "capacity": 300,
+    "cost": 130000,
+    "location": "Patna",
+    "eventTypes": ["Wedding", "Corporate"],
+    "amenities": ["Stage", "Parking", "AC", "Traditional Decor"]
+  },
+  {
+    "name": "City Inn Banquet",
+    "capacity": 150,
+    "cost": 70000,
+    "location": "Patna",
+    "eventTypes": ["Birthday", "Corporate"],
+    "amenities": ["Parking", "AC", "Dining"]
+  },
+  {
+    "name": "Mauri Garden Hall",
+    "capacity": 100,
+    "cost": 50000,
+    "location": "Patna",
+    "eventTypes": ["Birthday", "Engagement"],
+    "amenities": ["Open Garden", "AC"]
+  },
+  {
+    "name": "Raipur Royale Banquet",
+    "capacity": 250,
+    "cost": 100000,
+    "location": "Raipur",
+    "eventTypes": ["Wedding", "Corporate"],
+    "amenities": ["AC", "Stage", "Parking", "Sound System"]
+  },
+  {
+    "name": "Lakeview Palace",
+    "capacity": 200,
+    "cost": 85000,
+    "location": "Raipur",
+    "eventTypes": ["Wedding", "Birthday"],
+    "amenities": ["Lake View", "Parking", "AC"]
+  },
+  {
+    "name": "Raipur Heritage Hall",
+    "capacity": 280,
+    "cost": 120000,
+    "location": "Raipur",
+    "eventTypes": ["Wedding", "Engagement"],
+    "amenities": ["Traditional Decor", "Stage", "Dining"]
+  },
+  {
+    "name": "Silver Plaza Banquet",
+    "capacity": 150,
+    "cost": 70000,
+    "location": "Raipur",
+    "eventTypes": ["Corporate", "Birthday"],
+    "amenities": ["AC", "Sound System", "Parking"]
+  },
+  {
+    "name": "Green Garden Raipur",
+    "capacity": 100,
+    "cost": 55000,
+    "location": "Raipur",
+    "eventTypes": ["Birthday", "Engagement"],
+    "amenities": ["Garden", "Open Air", "Stage"]
+  },
+  {
+    "name": "Himalayan Resort Hall",
+    "capacity": 180,
+    "cost": 95000,
+    "location": "Manali",
+    "eventTypes": ["Wedding", "Engagement", "Birthday"],
+    "amenities": ["Mountain View", "AC", "Parking"]
+  },
+  {
+    "name": "Snow Valley Banquet",
+    "capacity": 150,
+    "cost": 85000,
+    "location": "Manali",
+    "eventTypes": ["Birthday", "Corporate"],
+    "amenities": ["Snow View", "Dining Hall", "Stage"]
+  },
+  {
+    "name": "Apple Orchard Resort",
+    "capacity": 120,
+    "cost": 75000,
+    "location": "Manali",
+    "eventTypes": ["Birthday", "Engagement"],
+    "amenities": ["Garden", "Mountain View", "AC"]
+  },
+  {
+    "name": "Riverfront Palace",
+    "capacity": 200,
+    "cost": 110000,
+    "location": "Manali",
+    "eventTypes": ["Wedding", "Corporate"],
+    "amenities": ["River View", "Stage", "Parking"]
+  },
+  {
+    "name": "Evergreen Hills Hall",
+    "capacity": 100,
+    "cost": 60000,
+    "location": "Manali",
+    "eventTypes": ["Birthday", "Corporate"],
+    "amenities": ["Hill View", "Open Garden"]
+  },
+  {
+    "name": "Jaipur Royal Palace",
+    "capacity": 300,
+    "cost": 160000,
+    "location": "Jaipur",
+    "eventTypes": ["Wedding", "Engagement"],
+    "amenities": ["Traditional Decor", "AC", "Stage", "Parking"]
+  },
+  {
+    "name": "Amber Heritage Banquet",
+    "capacity": 250,
+    "cost": 120000,
+    "location": "Jaipur",
+    "eventTypes": ["Wedding", "Corporate"],
+    "amenities": ["Historic Decor", "Stage", "AC", "Parking"]
+  },
+  {
+    "name": "Pink City Garden",
+    "capacity": 180,
+    "cost": 95000,
+    "location": "Jaipur",
+    "eventTypes": ["Birthday", "Engagement"],
+    "amenities": ["Garden", "Traditional Decor", "AC"]
+  },
+  {
+    "name": "Hawa Mahal Banquet",
+    "capacity": 200,
+    "cost": 110000,
+    "location": "Jaipur",
+    "eventTypes": ["Wedding", "Corporate"],
+    "amenities": ["Stage", "Sound System", "AC"]
+  },
+  {
+    "name": "Rajputana Resort",
+    "capacity": 150,
+    "cost": 80000,
+    "location": "Jaipur",
+    "eventTypes": ["Birthday", "Corporate"],
+    "amenities": ["Poolside", "Garden", "AC"]
+  },
+  {
+    "name": "Delhi Regal Banquet",
+    "capacity": 400,
+    "cost": 150000,
+    "location": "Delhi",
+    "eventTypes": ["Wedding", "Engagement"],
+    "amenities": ["AC", "Stage", "Parking", "Sound System"]
+  },
+  {
+    "name": "Connaught Place Hall",
+    "capacity": 200,
+    "cost": 120000,
+    "location": "Delhi",
+    "eventTypes": ["Corporate", "Birthday"],
+    "amenities": ["Central Location", "AC", "Dining"]
+  },
+  {
+    "name": "Lotus Banquet",
+    "capacity": 250,
+    "cost": 135000,
+    "location": "Delhi",
+    "eventTypes": ["Wedding", "Corporate"],
+    "amenities": ["Garden", "AC", "Stage"]
+  },
+  {
+    "name": "Red Fort View Banquet",
+    "capacity": 180,
+    "cost": 95000,
+    "location": "Delhi",
+    "eventTypes": ["Birthday", "Engagement"],
+    "amenities": ["Historic View", "AC", "Parking"]
+  },
+  {
+    "name": "Skyline Delhi Rooftop",
+    "capacity": 120,
+    "cost": 80000,
+    "location": "Delhi",
+    "eventTypes": ["Corporate", "Birthday"],
+    "amenities": ["Rooftop", "Bar", "Sound System"]
+  },
+  {
+    "name": "Noida Grandeur Hall",
+    "capacity": 300,
+    "cost": 140000,
+    "location": "Noida",
+    "eventTypes": ["Wedding", "Engagement"],
+    "amenities": ["AC", "Stage", "Parking"]
+  },
+  {
+    "name": "Sector 18 Banquet",
+    "capacity": 200,
+    "cost": 110000,
+    "location": "Noida",
+    "eventTypes": ["Corporate", "Birthday"],
+    "amenities": ["Central Location", "AC", "Sound System"]
+  },
+  {
+    "name": "Lotus Valley Garden",
+    "capacity": 180,
+    "cost": 95000,
+    "location": "Noida",
+    "eventTypes": ["Wedding", "Corporate"],
+    "amenities": ["Garden", "AC", "Stage"]
+  },
+  {
+    "name": "Film City Resort",
+    "capacity": 250,
+    "cost": 130000,
+    "location": "Noida",
+    "eventTypes": ["Wedding", "Engagement", "Birthday"],
+    "amenities": ["Poolside", "Stage", "AC"]
+  },
+  {
+    "name": "Skyline Tower Banquet",
+    "capacity": 150,
+    "cost": 85000,
+    "location": "Noida",
+    "eventTypes": ["Corporate", "Birthday"],
+    "amenities": ["Rooftop View", "AC", "Sound System"]
+  }
+]
