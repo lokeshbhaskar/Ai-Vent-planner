@@ -1,4 +1,5 @@
-export const BASE_URL = "http://localhost:8000";
+// export const BASE_URL = "http://localhost:8000";
+export const BASE_URL = "https://ai-vent-planner.onrender.com";
 
 export const API_PATHS = {
   AUTH: {
