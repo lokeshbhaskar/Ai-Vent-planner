@@ -6,6 +6,7 @@ import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Layout from "./components/Layout";
 import UserDashboard from "./components/UserDashboard";
+import FeatureDetails from "./components/FeatureDetails";
 import { Slide, ToastContainer } from "react-toastify";
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
           <Route path="/sign-up-page" element={<Signup />} />
           {/* user dashboard */}
           <Route path="/user-dashboard" element={<UserDashboard />} />
+          {/* feature page */}
+          <Route path="/features-details" element={<FeatureDetails />} />
         </Route>
       </Routes>
     </div>

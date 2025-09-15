@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Save } from "lucide-react";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
+import { toast } from "react-toastify";
 
 export default function PlanResult({ plan }) {
   const { user } = useContext(UserContext);

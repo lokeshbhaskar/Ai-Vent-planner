@@ -22,7 +22,6 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const dropdownRef = useRef();
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -51,7 +50,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Features", path: "/features" },
+    { name: "Features", path: "/features-details" },
     { name: "About", path: "/about" },
   ];
 
@@ -63,7 +62,7 @@ const Navbar = () => {
       transition={{ duration: 0.6, type: "spring" }}
     >
       {/* Brand */}
-      <h1 className="flex items-center text-3xl font-extrabold text-gray-800 space-x-1">
+      <h1 className="flex items-center text-3xl font-extrabold text-gray-800 space-x-1 cursor-pointer" onClick={()=> navigate('/')}>
         <Calendar1Icon size={25} className="text-pink-300" />
         <span className="text-purple-700">AI</span>
         <span className="text-sky-500">vent</span>
@@ -105,7 +104,7 @@ const Navbar = () => {
             {/* User Button */}
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2 bg-white text-purple-700 px-4 py-2 rounded-full font-semibold shadow-md hover:bg-gray-100 transition"
+              className="flex items-center gap-2 bg-white text-purple-700 px-4 py-2 rounded-full font-semibold shadow-md hover:bg-gray-100 transition cursor-pointer"
               aria-label="User menu"
             >
               <span>Welcome, {user.name}</span>

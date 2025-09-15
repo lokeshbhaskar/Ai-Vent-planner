@@ -18,8 +18,11 @@ export const loadInitialData = async (req, res) => {
     await Theme.deleteMany();
     await Vendor.deleteMany();
 
+    // Load and flatten venues
+    const venuesJSON = loadJSON("venues.json");
+    const allVenues = Object.values(venuesJSON).flat();
     // Insert new data
-    await Venue.insertMany(loadJSON("venues.json"));
+    await Venue.insertMany(allVenues);
     await Food.insertMany(loadJSON("foods.json"));
     await Theme.insertMany(loadJSON("themes.json"));
     await Vendor.insertMany(loadJSON("vendors.json"));

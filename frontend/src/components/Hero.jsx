@@ -8,7 +8,7 @@ const images = ["/img_1.jpg", "/img_2.jpg", "/img_3.jpg"];
 const Hero = () => {
   const navigate = useNavigate();
   return (
-    <section className="flex flex-col items-center justify-center text-center py-6 px-6 text-gray-800 overflow-hidden bg-gradient-to-b from-gray-100 via-purple-200 to-pink-200 ">
+    <section className="flex flex-col items-center justify-center text-center py-6 px-6 text-gray-800 overflow-hidden  ">
       {/* Heading */}
       <motion.h2
         className="text-3xl md:text-4xl font-extrabold mb-10 leading-tight"
@@ -25,7 +25,7 @@ const Hero = () => {
           Celebrate Better 🎉
         </motion.span>
       </motion.h2>
-      <div className="flex justify-center mb-4 ">
+      <div className="flex justify-center mb-0 ">
         <div className="relative w-[500px] h-[350px] flex justify-center">
           {images.map((src, index) => (
             <motion.img
@@ -46,7 +46,7 @@ const Hero = () => {
       </div>
       {/* Paragraph */}
       <motion.p
-        className="text-lg md:text-xl max-w-2xl mb-8 text-gray-600"
+        className="text-lg md:text-xl max-w-2xl mb-6 text-gray-600"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
@@ -77,17 +77,16 @@ const Hero = () => {
           transition={{ duration: 0.4 }}
           whileHover={{
             scale: 1.1,
-            boxShadow: "0px 8px 20px rgba(109,40,217,0.3)",
           }}
-          whileTap={{ scale: 0.95 }} // click effect
+          whileTap={{ scale: 0.95 }}
           className="rounded-full"
         >
-          <Button
-            className="bg-purple-600 text-white hover:bg-purple-700 rounded-full px-6 py-3 text-lg shadow-md"
+          <button
+            className="bg-purple-600 text-white hover:bg-purple-700 rounded-full px-6 py-2 text-lg shadow-md cursor-pointer"
             onClick={() => navigate("/ai-planner-page")}
           >
             Start Planning
-          </Button>
+          </button>
         </motion.div>
 
         <motion.div
@@ -100,12 +99,9 @@ const Hero = () => {
           whileTap={{ scale: 0.95 }}
           className="rounded-full"
         >
-          <Button
-            variant="outline"
-            className="border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full px-6 py-3 text-lg"
-          >
+          <button className="border-pink-300 text-gray-700 bg-pink-300 hover:bg-pink-400 rounded-full px-6 py-2 text-lg cursor-pointer">
             Learn More
-          </Button>
+          </button>
         </motion.div>
       </motion.div>
     </section>

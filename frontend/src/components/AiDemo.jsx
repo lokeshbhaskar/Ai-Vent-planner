@@ -21,7 +21,7 @@ export default function AIDemo() {
   };
 
   return (
-    <section className="py-16 px-6 bg-gradient-to-b from-gray-100 via-purple-200 to-pink-200">
+    <section className="py-16 px-6  ">
       <h2 className="text-3xl font-bold text-center mb-6">Try Our AI Planner</h2>
       <p className="text-center text-gray-600 mb-8">
         Type your event details and see a sample plan instantly!

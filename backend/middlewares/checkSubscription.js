@@ -19,7 +19,7 @@ export const checkSubscription = async (req, res, next) => {
       error: "Free limit reached. Subscribe to create more plans.",
     });
   }
-  if (!user.isSubscribed && user.planCount >= 5) {
+  if (!user.isSubscribed && user.planCount >= 10) {
     return res.status(403).json({
       error: "Free limit reached. Please subscribe to continue.",
     });

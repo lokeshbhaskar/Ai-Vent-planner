@@ -23,13 +23,20 @@ export const generateEventPlan = async (req, res) => {
     // -----------------------------
     // VENUE FILTER
     // -----------------------------
-    const viableVenues = venues.filter(
+
+    // Now filter by city
+    const selectedCity = String(venue || "").toLowerCase();
+    const allVenues = Object.values(venues).flat();
+    // console.log("All venues:", allVenues);
+    const viableVenues = allVenues.filter(
       (v) =>
-        Number(v.capacity) >= Number(guests) && Number(v.cost) <= Number(budget)
+        v.location.toLowerCase() === selectedCity &&
+        Number(v.capacity) >= Number(guests) &&
+        Number(v.cost) <= Number(budget)
     );
     if (!viableVenues.length) {
       return res
-        .status(404)
+        .status(422)
         .json({ success: false, message: "No venues fit capacity/budget." });
     }
 
@@ -37,6 +44,7 @@ export const generateEventPlan = async (req, res) => {
     // FOOD FILTER
     // -----------------------------
     const pref = (food || "").toLowerCase();
+    // its return all food which is matched with event type
     const foodsByEvent = foods.filter((f) => f.eventTypes.includes(eventType));
     const filteredFoods =
       pref === "veg" || pref === "vegetarian"
@@ -47,6 +55,8 @@ export const generateEventPlan = async (req, res) => {
         ? foodsByEvent.filter((f) => /non-vegetarian/i.test(f.type))
         : pref === "vegan"
         ? foodsByEvent.filter((f) => /vegan/i.test(f.type))
+        : pref === "mixed"
+        ? foodsByEvent.filter((f) => /mixed/i.test(f.type))
         : foodsByEvent;
 
     // -----------------------------
@@ -211,7 +221,7 @@ Available options:
         title: `${eventType} Plan`,
         date,
         venue: best.venue,
-        guests: String(guests), 
+        guests: String(guests),
         theme: {
           name: best.theme.name,
           colors: ["#FFFFFF", "#E2E8F0"],
@@ -250,10 +260,10 @@ Available options:
         },
       };
     }
-    
+
     if (req.userData && !req.userData.isSubscribed) {
       req.userData.planCount += 1;
-      console.log("count ",req.userData.planCount);
+      console.log("count ", req.userData.planCount);
       await req.userData.save();
     }
     return res.status(200).json({ success: true, plan });
