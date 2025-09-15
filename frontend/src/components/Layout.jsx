@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
-import { useTheme } from "../context/themeContext"; // <-- import hook
+import { useTheme } from "../context/ThemeContext"; // <-- import hook
 
 const Layout = () => {
   const { currentTheme } = useTheme(); // <-- get current theme

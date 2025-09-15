@@ -1,5 +1,5 @@
  import { useState } from "react";
-import { useTheme } from "../context/themeContext";
+import { useTheme } from "../context/ThemeContext";
 
 export default function EventThemes() {
   const { changeTheme } = useTheme();
