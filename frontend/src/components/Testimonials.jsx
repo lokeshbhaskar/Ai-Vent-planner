@@ -34,7 +34,7 @@ export default function Testimonials() {
     setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-16 px-6 ">
+    <section className="py-16 px-8 ">
       <h2 className="text-3xl font-bold text-center mb-12">
         What Our Users Say
       </h2>
@@ -55,7 +55,7 @@ export default function Testimonials() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.5 }}
-          className="bg-white p-8 rounded-3xl shadow-lg relative"
+          className="bg-white p-4 rounded-3xl shadow-lg relative"
         >
           {/* Speech Bubble Pointer */}
           <div className="absolute -bottom-4 left-12 w-6 h-6 bg-pink-500 rotate-45 shadow-md"></div>
