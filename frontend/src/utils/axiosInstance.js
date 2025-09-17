@@ -8,7 +8,6 @@ const axiosInstance = axios.create({
     Accept: "application/json",
   },
 });
-
 // ✅ Interceptor to attach token
 axiosInstance.interceptors.request.use(
   (config) => {

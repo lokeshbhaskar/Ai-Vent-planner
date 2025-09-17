@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
+import OnlineStatus from "./OutlineStatus";
 
 const Navbar = () => {
   const { user, clearUser } = useContext(UserContext);
@@ -67,6 +68,7 @@ const Navbar = () => {
         <span className="text-purple-700">AI</span>
         <span className="text-sky-500">vent</span>
       </h1>
+       <OnlineStatus/>
 
       {/* Desktop Links */}
       <div className="hidden md:flex gap-8 text-lg font-medium text-gray-700">
@@ -81,6 +83,7 @@ const Navbar = () => {
             {link.name}
           </Link>
         ))}
+       
       </div>
 
       {/* Right Side */}
@@ -98,6 +101,7 @@ const Navbar = () => {
             )}
           </button>
         </div>
+      
 
         {user ? (
           <div className="hidden md:block relative" ref={dropdownRef}>
