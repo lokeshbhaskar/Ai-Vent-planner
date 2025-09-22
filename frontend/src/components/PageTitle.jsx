@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
 const PageTitle = () => {
   const location = useLocation();
+
   useEffect(() => {
     switch (location.pathname) {
       case "/":
@@ -12,17 +14,22 @@ const PageTitle = () => {
         break;
       case "/login-page":
         document.title = "AIVENT | Login";
+        break;
       case "/sign-up-page":
         document.title = "AIVENT | Register";
+        break;
       case "/features-details":
         document.title = "AIVENT | Details Page";
+        break;
       case "/ai-planner-page":
         document.title = "AIVENT | Planner Page";
-      default:
         break;
+      default:
+        document.title = "AIVENT | AI Event Planner";  
     }
-  },[location]);
-  return  null;
+  }, [location]);
+
+  return null;
 };
 
 export default PageTitle;
