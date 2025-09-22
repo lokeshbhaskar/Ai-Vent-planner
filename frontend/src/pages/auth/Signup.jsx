@@ -25,7 +25,7 @@ export default function Signup() {
       const res = await axiosInstance.post(API_PATHS.AUTH.REGISTER, form);
       updateUser(res.data);
       setMessage(res.data.message);
-      toast.success("🎉 Account created successfully!", {
+      toast.success(" Account created successfully!", {
         style: {
           width: "300px",
           borderRadius: "12px",
@@ -36,7 +36,7 @@ export default function Signup() {
       navigate("/");
     } catch (err) {
       setMessage("Signup failed!");
-      toast.error("❌ Signup error");
+      toast.error(" Signup error");
       console.error(err);
     }
   };

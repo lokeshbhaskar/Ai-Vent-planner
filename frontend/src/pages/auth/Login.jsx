@@ -24,7 +24,7 @@ export default function Login() {
       const res = await axiosInstance.post(API_PATHS.AUTH.LOGIN, form);
       updateUser(res.data);
       setMessage("Login successful!");
-      toast.success("✅ Login Success!", {
+      toast.success("Login Success!", {
         style: {
           width: "300px",
           borderRadius: "12px",
@@ -36,7 +36,7 @@ export default function Login() {
       navigate("/");
     } catch (err) {
       setMessage("Login failed!");
-      toast.error("❌ Login error");
+      toast.error("Login error");
       console.error(err);
     }
   };
