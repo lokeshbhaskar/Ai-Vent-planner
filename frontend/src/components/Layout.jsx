@@ -5,7 +5,6 @@ import { useTheme } from "../context/ThemeContext";
 
 const Layout = () => {
   const { currentTheme } = useTheme();
-
   return (
     <div
       className={`flex flex-col min-h-screen ${currentTheme.bg} transition-colors duration-500 overflow-hidden`}

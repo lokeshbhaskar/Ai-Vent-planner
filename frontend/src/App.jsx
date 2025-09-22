@@ -8,6 +8,7 @@ import Layout from "./components/Layout";
 import UserDashboard from "./components/UserDashboard";
 import FeatureDetails from "./components/FeatureDetails";
 import { Slide, ToastContainer } from "react-toastify";
+import PageTitle from "./components/PageTitle";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         theme="colored"
         transition={Slide}
       />
+      <PageTitle/>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<LandinPage />} />

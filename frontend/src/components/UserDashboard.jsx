@@ -18,7 +18,7 @@ const UserDashboard = ({ token }) => {
     const fetchPlans = async () => {
       try {
         const res = await axiosInstance.get(API_PATHS.EVENT.GET_EVENT_DETAILS);
-        console.log(res.data);
+        // console.log(res.data);
         setPlans(res.data.events || []);
       } catch (err) {
         console.error(err);

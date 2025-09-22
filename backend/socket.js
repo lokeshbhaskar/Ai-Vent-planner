@@ -12,13 +12,13 @@ export default function initSocket(server) {
   });
   io.on("connection", (socket) => {
     onlineUsers++;
-    console.log(`🔗 User connected | Total online: ${onlineUsers}`);
+    // console.log(`User connected | Total online: ${onlineUsers}`);
     // Send online user count to all clients
     io.emit("onlineUsers", onlineUsers);
 
     socket.on("disconnect", () => {
       onlineUsers--;
-      console.log(`❌ User disconnected | Total online: ${onlineUsers}`);
+      console.log(`User disconnected | Total online: ${onlineUsers}`);
       io.emit("onlineUsers", onlineUsers);
     });
   });
