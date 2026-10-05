@@ -1,15 +1,16 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { Button } from "../components/ui/button";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 import {
-  User,
+  Calendar,
+  LayoutDashboard,
+  Menu,
+  X,
   LogOut,
-  HomeIcon,
-  Calendar1Icon,
-  LayoutDashboardIcon,
-  MenuIcon,
-  XIcon,
+  User,
+  ChevronDown,
+  Sparkles,
+  Home,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
@@ -21,221 +22,241 @@ const Navbar = () => {
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setDropdownOpen(false);
-        setMobileOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   const handleLogout = () => {
     clearUser();
     setDropdownOpen(false);
     setMobileOpen(false);
     navigate("/");
-    toast.info("👋 You have been logged out.", {
-      style: {
-        width: "300px",
-        borderRadius: "12px",
-        textAlign: "center",
-        margin: "0 auto",
-      },
-    });
+    toast.info("You've been signed out.");
   };
 
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Features", path: "/features-details" },
-    { name: "About", path: "/about" },
   ];
 
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <motion.nav
-      className="flex items-center justify-between px-4 md:px-8 py-4 bg-white/40 backdrop-blur-md shadow-lg border-b border-white/30 sticky top-0 z-50"
-      initial={{ y: -70 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, type: "spring" }}
-    >
-      {/* Brand */}
-      <h1 className="flex items-center text-3xl font-extrabold text-gray-800 space-x-1 cursor-pointer" onClick={()=> navigate('/')}>
-        <Calendar1Icon size={25} className="text-pink-300" />
-        <span className="text-purple-700">AI</span>
-        <span className="text-sky-500">vent</span>
-      </h1>
-       <OnlineStatus/>
-
-      {/* Desktop Links */}
-      <div className="hidden md:flex gap-8 text-lg font-medium text-gray-700">
-        {navLinks.map((link) => (
-          <Link
-            key={link.name}
-            to={link.path}
-            className={`hover:text-purple-600 transition ${
-              location.pathname === link.path ? "text-purple-700 font-bold" : ""
-            }`}
-          >
-            {link.name}
-          </Link>
-        ))}
-       
-      </div>
-
-      {/* Right Side */}
-      <div className="flex items-center gap-2">
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-md border-b border-zinc-200 shadow-sm"
+            : "bg-white/80 backdrop-blur-sm border-b border-zinc-100"
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+          {/* Brand */}
           <button
-            aria-label="Toggle menu"
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 font-bold text-lg tracking-tight text-zinc-900 hover:opacity-80 transition-opacity"
           >
-            {mobileOpen ? (
-              <XIcon className="text-red-800" size={30} />
-            ) : (
-              <MenuIcon className="text-purple-800" size={30} />
-            )}
+            <div className="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center">
+              <Sparkles size={14} className="text-white" />
+            </div>
+            AI<span className="text-indigo-600">vent</span>
           </button>
-        </div>
-      
 
-        {user ? (
-          <div className="hidden md:block relative" ref={dropdownRef}>
-            {/* User Button */}
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2 bg-white text-purple-700 px-4 py-2 rounded-full font-semibold shadow-md hover:bg-gray-100 transition cursor-pointer"
-              aria-label="User menu"
-            >
-              <span>Welcome, {user.name}</span>
-              <div className="w-6 h-6 rounded-full bg-purple-500 text-white flex items-center justify-center text-sm font-bold">
-                {user.name[0].toUpperCase()}
-              </div>
-            </button>
-
-            {/* Dropdown */}
-            <AnimatePresence>
-              {dropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute right-0 mt-3 w-44 bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden z-50"
-                >
-                  <motion.button
-                    onClick={handleLogout}
-                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 transition text-red-500"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <LogOut className="w-4 h-4" /> Logout
-                  </motion.button>
-
-                  <motion.button
-                    onClick={() => navigate("/user-dashboard")}
-                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 transition text-purple-700"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <LayoutDashboardIcon className="w-4 h-4" /> Dashboard
-                  </motion.button>
-
-                  <motion.button
-                    onClick={() => navigate("/")}
-                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 transition text-teal-700"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <HomeIcon className="w-4 h-4" /> Home
-                  </motion.button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ) : (
-          <Button
-            className="hidden md:block bg-gradient-to-r from-purple-600 to-pink-500 hover:bg-purple-700 text-white rounded-full   font-bold text-lg"
-            onClick={() => navigate("/auth-page")}
-            size="lg"
-          >
-            Join Now
-          </Button>
-        )}
-      </div>
-
-      {/* Mobile Menu */}
-
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            ref={dropdownRef}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.3, type: "spring" }}
-            className="fixed bg-pink-200/40 backdrop-blur-xl top-18 right-0 w-3/4 h-auto shadow-lg z-40 flex flex-col p-6 gap-4 md:hidden"
-          >
-            {/* Nav Links */}
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                onClick={() => setMobileOpen(false)}
-                className={`block w-full px-4 py-2 rounded-lg text-lg font-medium transition ${
-                  location.pathname === link.path
-                    ? "bg-purple-100 text-purple-700 font-bold"
-                    : "text-teal-900 hover:bg-purple-50 hover:text-purple-700"
+                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  isActive(link.path)
+                    ? "bg-zinc-100 text-zinc-900"
+                    : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
+          </div>
 
-            {/* Divider */}
-            <hr className="my-3 border-purple-200" />
+          {/* Right side */}
+          <div className="flex items-center gap-2">
+            <OnlineStatus />
 
-            {/* Auth Buttons */}
             {user ? (
-              <div className="flex flex-col gap-3">
-                <Button
-                  className="bg-purple-600 hover:bg-purple-700 text-white rounded-lg py-2"
-                  onClick={() => {
-                    navigate("/user-dashboard");
-                    setMobileOpen(false);
-                  }}
+              <div className="relative hidden md:block" ref={dropdownRef}>
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-lg text-sm font-medium text-zinc-700 hover:bg-zinc-100 transition-colors"
+                  aria-label="User menu"
                 >
-                  Dashboard
-                </Button>
-                <Button
-                  variant="destructive"
-                  className="rounded-lg py-2"
-                  onClick={() => {
-                    handleLogout();
-                    setMobileOpen(false);
-                  }}
-                >
-                  Logout
-                </Button>
+                  <div className="w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">
+                    {user.name?.[0]?.toUpperCase()}
+                  </div>
+                  <span className="text-zinc-700">{user.name}</span>
+                  <ChevronDown
+                    size={14}
+                    className={`text-zinc-400 transition-transform ${
+                      dropdownOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {dropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 4, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 4, scale: 0.97 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute right-0 mt-2 w-48 bg-white rounded-xl border border-zinc-200 shadow-lg overflow-hidden z-50 py-1"
+                    >
+                      <div className="px-3 py-2 border-b border-zinc-100">
+                        <p className="text-xs text-zinc-400 font-medium">Signed in as</p>
+                        <p className="text-sm font-semibold text-zinc-800 truncate">{user.name}</p>
+                      </div>
+                      <button
+                        onClick={() => { navigate("/user-dashboard"); setDropdownOpen(false); }}
+                        className="flex items-center gap-2.5 w-full px-3 py-2 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors"
+                      >
+                        <LayoutDashboard size={15} className="text-zinc-400" />
+                        My Events
+                      </button>
+                      <button
+                        onClick={() => { navigate("/"); setDropdownOpen(false); }}
+                        className="flex items-center gap-2.5 w-full px-3 py-2 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors"
+                      >
+                        <Home size={15} className="text-zinc-400" />
+                        Home
+                      </button>
+                      <div className="border-t border-zinc-100 mt-1 pt-1">
+                        <button
+                          onClick={handleLogout}
+                          className="flex items-center gap-2.5 w-full px-3 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
+                        >
+                          <LogOut size={15} />
+                          Sign out
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ) : (
-              <Button
-                className="bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 text-white rounded-lg py-2"
-                onClick={() => {
-                  navigate("/auth-page");
-                  setMobileOpen(false);
-                }}
-              >
-                Join Now
-              </Button>
+              <div className="hidden md:flex items-center gap-2">
+                <button
+                  onClick={() => navigate("/login-page")}
+                  className="px-3 py-1.5 text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+                >
+                  Sign in
+                </button>
+                <button
+                  onClick={() => navigate("/sign-up-page")}
+                  className="btn-primary text-sm px-4 py-2"
+                >
+                  Get started
+                </button>
+              </div>
             )}
+
+            {/* Mobile menu toggle */}
+            <button
+              className="md:hidden p-2 rounded-lg text-zinc-600 hover:bg-zinc-100 transition-colors"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+            className="fixed top-14 inset-x-0 z-40 bg-white border-b border-zinc-200 shadow-lg md:hidden"
+          >
+            <div className="p-4 space-y-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                    isActive(link.path)
+                      ? "bg-indigo-50 text-indigo-700"
+                      : "text-zinc-700 hover:bg-zinc-50"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <div className="pt-3 border-t border-zinc-100 mt-3 space-y-2">
+                {user ? (
+                  <>
+                    <button
+                      onClick={() => navigate("/user-dashboard")}
+                      className="flex items-center gap-2 w-full px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-700 hover:bg-zinc-50 transition-colors"
+                    >
+                      <LayoutDashboard size={16} className="text-zinc-400" />
+                      My Events
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center gap-2 w-full px-3 py-2.5 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 transition-colors"
+                    >
+                      <LogOut size={16} />
+                      Sign out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => navigate("/login-page")}
+                      className="w-full py-2.5 text-center text-sm font-medium text-zinc-700 border border-zinc-200 rounded-lg hover:bg-zinc-50"
+                    >
+                      Sign in
+                    </button>
+                    <button
+                      onClick={() => navigate("/sign-up-page")}
+                      className="w-full py-2.5 text-center text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700"
+                    >
+                      Get started free
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Mobile Menu */}
-    </motion.nav>
+      {/* Spacer for fixed navbar */}
+      <div className="h-14" />
+    </>
   );
 };
 

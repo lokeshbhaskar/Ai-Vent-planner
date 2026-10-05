@@ -1,32 +1,21 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+const titles = {
+  "/": "AIvent — AI-Powered Event Planning",
+  "/user-dashboard": "My Events — AIvent",
+  "/login-page": "Sign In — AIvent",
+  "/sign-up-page": "Create Account — AIvent",
+  "/features-details": "Features — AIvent",
+  "/ai-planner-page": "Plan Your Event — AIvent",
+  "/auth-page": "Sign In — AIvent",
+};
+
 const PageTitle = () => {
   const location = useLocation();
 
   useEffect(() => {
-    switch (location.pathname) {
-      case "/":
-        document.title = "AIVENT | AI Event Planner";
-        break;
-      case "/user-dashboard":
-        document.title = "AIVENT | Dashboard";
-        break;
-      case "/login-page":
-        document.title = "AIVENT | Login";
-        break;
-      case "/sign-up-page":
-        document.title = "AIVENT | Register";
-        break;
-      case "/features-details":
-        document.title = "AIVENT | Details Page";
-        break;
-      case "/ai-planner-page":
-        document.title = "AIVENT | Planner Page";
-        break;
-      default:
-        document.title = "AIVENT | AI Event Planner";  
-    }
+    document.title = titles[location.pathname] || "AIvent — AI Event Planner";
   }, [location]);
 
   return null;

@@ -5,7 +5,7 @@ let onlineUsers = 0;
 export default function initSocket(server) {
   const io = new Server(server, {
     cors: {
-      origin:  "https://ai-vent-planner-1.onrender.com",
+      origin: "*",
       methods: ["GET", "POST"],
       credentials: true,
     },

@@ -1,5 +1,5 @@
 import LandinPage from "./pages/LandinPage";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ChatPlanner from "./pages/chat-planner/ChatPlanner";
 import AuthPage from "./pages/auth/AuthPage";
 import Login from "./pages/auth/Login";
@@ -9,28 +9,31 @@ import UserDashboard from "./components/UserDashboard";
 import FeatureDetails from "./components/FeatureDetails";
 import { Slide, ToastContainer } from "react-toastify";
 import PageTitle from "./components/PageTitle";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div>
       <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        theme="colored"
+        position="top-right"
+        autoClose={3000}
+        theme="light"
         transition={Slide}
+        toastClassName="font-sans"
+        closeButton={false}
+        hideProgressBar
       />
-      <PageTitle/>
+      <PageTitle />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<LandinPage />} />
           <Route path="/ai-planner-page" element={<ChatPlanner />} />
-          {/* auth page */}
+          {/* Auth pages — no navbar needed so we render standalone */}
           <Route path="/auth-page" element={<AuthPage />} />
           <Route path="/login-page" element={<Login />} />
           <Route path="/sign-up-page" element={<Signup />} />
-          {/* user dashboard */}
+          {/* Dashboard & features */}
           <Route path="/user-dashboard" element={<UserDashboard />} />
-          {/* feature page */}
           <Route path="/features-details" element={<FeatureDetails />} />
         </Route>
       </Routes>
